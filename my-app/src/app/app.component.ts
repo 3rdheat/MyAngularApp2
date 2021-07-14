@@ -8,12 +8,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   serverElements = [];
 
-  addServer(newItem: any){
-    this.serverElements.push(newItem);
+  addServer(value){
+    this.serverElements.push(value);
   }
 
-  addBluePrint(newItem: any){
-    this.serverElements.push(newItem);
+  addBluePrint(value){
+    this.serverElements.push(value);
   }
 
 
