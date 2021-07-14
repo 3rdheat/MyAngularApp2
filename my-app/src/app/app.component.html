@@ -3,8 +3,11 @@
   <hr>
   <div class="row">
     <div class="col-xs-12">
+      <button class="btn-sm btn-primary" (click)="ChangeElement()">Change element</button>
+      <button class="btn-sm btn-danger" (click)="DestroyElement()">Destroy element</button>
       <app-server-element *ngFor="let serverElement of serverElements"
-      [element]="serverElement"></app-server-element>
+      [element]="serverElement"
+      [name]="serverElement.name"></app-server-element>
     </div>
   </div>
 </div>
