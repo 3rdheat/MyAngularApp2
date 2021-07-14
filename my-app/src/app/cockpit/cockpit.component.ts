@@ -8,44 +8,29 @@ import { ServerModel } from '../model/server.model';
 })
 export class CockpitComponent implements OnInit {
   
-  @Output() newItemEvent = new EventEmitter<any>();
-  @Output() createServer = new EventEmitter<{type: string, name: string, content: string}>();
-  @Output() createBlueprint = new EventEmitter<{type: string, name: string, content: string}>();
-
-  element : {type: string, name: string, content: string}
-  newServerName = '';
-  newServerContent = '';
+  @Output() onCreateServer = new EventEmitter<{type: string, name: string, content: string}>();
+  @Output() onCreateBlueprint = new EventEmitter<{type: string, name: string, content: string}>();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onCreateServer(){
-    this.createServer.emit({
+  CreateServer(serverName : HTMLInputElement, serverContent : HTMLInputElement){
+    this.onCreateServer.emit({
       type: 'server',
-      name: this.newServerName,
-      content: this.newServerContent
+      name: serverName.value,
+      content: serverContent.value
     })
   }
 
-  onCreateBlueprint(){
-    this.createServer.emit({
+  CreateBlueprint(serverName : HTMLInputElement, serverContent : HTMLInputElement){
+    this.onCreateServer.emit({
       type: 'blueprint',
-      name: this.newServerName,
-      content: this.newServerContent
+      name: serverName.value,
+      content: serverContent.value
     })
   }
 
-  onAddServer(type: string, name: string, content: string){
 
-    this.element = {type: type, name: name, content: content}
-    this.newItemEvent.emit(this.element)
-  }
-
-  onAddBlueprint(type: string, name: string, content: string){
-
-    this.element = {type: type, name: name, content: content}
-    this.newItemEvent.emit(this.element)
-  }
 }
