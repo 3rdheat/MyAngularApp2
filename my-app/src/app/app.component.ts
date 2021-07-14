@@ -6,11 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  serverElements = [
-    
-  ];
+  serverElements = [];
 
   addServer(newItem: any){
+    this.serverElements.push(newItem);
+  }
+
+  addBluePrint(newItem: any){
     this.serverElements.push(newItem);
   }
 

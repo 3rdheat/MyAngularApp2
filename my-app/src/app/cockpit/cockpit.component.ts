@@ -7,8 +7,11 @@ import { ServerModel } from '../model/server.model';
   styleUrls: ['./cockpit.component.css']
 })
 export class CockpitComponent implements OnInit {
-
+  
   @Output() newItemEvent = new EventEmitter<any>();
+  @Output() createServer = new EventEmitter<{type: string, name: string, content: string}>();
+  @Output() createBlueprint = new EventEmitter<{type: string, name: string, content: string}>();
+
   element : {type: string, name: string, content: string}
   newServerName = '';
   newServerContent = '';
@@ -16,6 +19,22 @@ export class CockpitComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onCreateServer(){
+    this.createServer.emit({
+      type: 'server',
+      name: this.newServerName,
+      content: this.newServerContent
+    })
+  }
+
+  onCreateBlueprint(){
+    this.createServer.emit({
+      type: 'blueprint',
+      name: this.newServerName,
+      content: this.newServerContent
+    })
   }
 
   onAddServer(type: string, name: string, content: string){
@@ -29,25 +48,4 @@ export class CockpitComponent implements OnInit {
     this.element = {type: type, name: name, content: content}
     this.newItemEvent.emit(this.element)
   }
-
-
-  // onAddServer() {
-  //   this.serverElements.push({
-  //     type: 'server',
-  //     name: this.newServerName,
-  //     content: this.newServerContent
-  //   });
-  // }
-
-  // onAddBlueprint() {
-  //   this.serverElements.push({
-  //     type: 'blueprint',
-  //     name: this.newServerName,
-  //     content: this.newServerContent
-  //   });
-  // }
-
-
-
-
 }
